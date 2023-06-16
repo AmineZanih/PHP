@@ -36,31 +36,24 @@
         <input type="text" name="product_naam" placeholder="product_naam" required><br>
         <input type="number" name="prijs_per_stuk" placeholder="prijs_per_stuk" required><br>
         <input type="text" name="omschrijving" placeholder="omschrijving" required><br>
-        <input type="submit" name="verstuur" placeholder="verzenden"><br>
-
-    </form>
-
-
+       <input type="submit" name="verstuur" placeholder="verzenden"><br>
+  </form>
     <?php
 
   if(isset($_POST["verstuur"])) {
     $product_naam= $_POST['product_naam'];
     $prijs_per_stuk=$_POST['prijs_per_stuk'];
     $omschrijving=$_POST['omschrijving'];
-
    $data = [
       'product_naam' => $product_naam,
       'prijs_per_stuk' => $prijs_per_stuk,
       'omschrijving' => $omschrijving,
-
     ];
     $sql = "INSERT INTO product_naam (product_naam, prijs_per_stuk, omschrijving
     ) VALUES (:product_naam, :prijs_per_stuk, :omschrijving)";
     $stmt=$pdo->prepare($sql);
     $stmt->execute($data);
-
   }  
     ?>
-
 </body>
 </html>
